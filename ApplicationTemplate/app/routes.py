@@ -1,6 +1,6 @@
 from app import app
 
-# These lines cause an empty URL or /index to be mapped to the index() view function
+# These lines cause an empty URL and the /index URL to be mapped to the index() view function
 @app.route('/')
 @app.route('/index')
 def index():
