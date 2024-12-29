@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% if title %}
+    <title>{{title}}</title>
+    {% else %}
+    <title>PLEASE SPECIFY TITLE</title>
+    {% endif %}
+</head>
+
+<body>
+    <div>Menu: <a href="/index">Home</a></div>
+    <hr>
+    {% block content %}{% endblock %}
+</body>
+
+</html>

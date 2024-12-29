@@ -5,9 +5,9 @@ from app import app
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html', title='Default Page', header='Main Header')
+    return render_template('index.html', title='Home Page', header='Home')
 
 # This line causes the /help URL to be mapped to the help() view function
 @app.route('/help')
 def help():
-    return 'Help page'
+    return render_template('help.html', title='Help Page', header='Help')
