@@ -1,0 +1,42 @@
+<!-- Code based on "The New and Improved Flask Mega-Tutorial (2024 Edition)" by Miguel Grinberg -->
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Login</h1>
+
+<!--
+        A HTML form is used to collect user input. See https://www.w3schools.com/html/html_forms.asp.
+
+        action=""       => Causes the form to be submitted to the URL that is currently in the address bar
+        method="post"   => Considered best practice instead of using "get"
+        novalidate      => Tells the web browser not to apply validation to the fields in the form (Flask will do this)
+-->
+<form action="" method="post" novalidate>
+    <!-- Generate a hidden field that includes a token used to protect against CSRF attacks -->
+    {{ form.hidden_tag() }}
+    <p>
+        <!-- Generate username label HTML -->
+        {{ form.username.label }}<br>
+        <!-- Generate username field HTML -->
+        {{ form.username(size=32) }}
+        <!-- Display validation error(s) for username -->
+        {% for error in form.username.errors %}
+        <span style="color:red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        <!-- Generate password label HTML -->
+        {{ form.password.label }}<br>
+        <!-- Generate password field HTML -->
+        {{ form.password(size=32) }}
+        <!-- Display validation error(s) for password -->
+        {% for error in form.password.errors %}
+        <span style="color:red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+    <p>{{ form.submit() }}</p>
+</form>
+
+{% endblock %}

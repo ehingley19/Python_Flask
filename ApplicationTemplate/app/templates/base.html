@@ -1,3 +1,4 @@
+<!-- Code based on "The New and Improved Flask Mega-Tutorial (2024 Edition)" by Miguel Grinberg -->
 <!DOCTYPE html>
 <html>
 
@@ -10,8 +11,24 @@
 </head>
 
 <body>
-    <div>Menu: <a href="/index">Home</a></div>
+    <div>
+        Menu:
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('help') }}">Help</a>
+        <a href="{{ url_for('login') }}">Login</a>
+    </div>
     <hr>
+    <!-- Display messages -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
     {% block content %}{% endblock %}
 </body>
 
